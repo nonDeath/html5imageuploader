@@ -1,12 +1,13 @@
 
-(function($){
+(function( $ ) {
     var methods = {
         init: function(options) {
+            options = $.extend({}, $.fn.imageUpl.defaults, options);
             return $(this);
         }
     };
 
-    $.fn.imageupl = function(method) {
+    $.fn.imageUpl = function(method) {
         if(methods[method]) {
             return methods[ method ].apply( this, Array.prototype.slice.call( arguments, 1 ));
         } else if(typeof method === 'object' || ! method) {
@@ -19,4 +20,8 @@
         return $(this);
     };
 
-})(jQuery);
+    $.fn.imageUpl.defaults = {
+        maxFileSize: "2000"
+    };
+
+})( jQuery );

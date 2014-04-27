@@ -8,9 +8,14 @@
 </head>
 <body>
     <div id="qunit"></div>
-    <div id="qunit-fixture"></div>
+    <div id="qunit-fixture">
+        <form action="index_submit" method="post" accept-charset="utf-8">
+            <input type="file" name="img" id="img">
+        </form>
+    </div>
     <script src="../libraries/jquery/dist/jquery.min.js"></script>
     <script src="../libraries/qunit/qunit/qunit.js"></script>
     <script src="../src/jquery.imageupl.js"></script>
+    <script src="./js/imageupl.js"></script>
 </body>
 </html>
