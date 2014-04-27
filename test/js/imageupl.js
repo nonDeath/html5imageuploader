@@ -3,6 +3,22 @@ test("init test", function() {
 
     ok(typeof(imgUpl) === "object", "Pased! " + typeof(imgUpl) + " returned.");
 
+    equal($("#img").imageUpl().attr("type"), "file", $("#img").imageUpl().attr("type") + " returned.");
+
+    throws(
+        // the callback
+        function() {
+            $(document.createElement("img")).imageUpl();
+        },
+        // test the message that will be returned.
+        /file/,
+        // the test case message.
+        "Something bad was happened, a file input is required here."
+    );
+
+
+
+
 });
 
 test("default values setting test", function() {
