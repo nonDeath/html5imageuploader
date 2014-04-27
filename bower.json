@@ -1,0 +1,30 @@
+{
+  "name": "html5ImageUpload",
+  "version": "0.0.0",
+  "authors": [
+    "Marcelo Gutierrez <marceloaldo@gmail.com>"
+  ],
+  "description": "Project's dependecies",
+  "keywords": [
+    "HTML5",
+    "file",
+    "upload",
+    "image",
+    "management"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "libraries",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": ">= 1.9.0"
+  },
+  "devDependencies": {
+    "qunit": ">= 1.14.0"
+  }
+}
