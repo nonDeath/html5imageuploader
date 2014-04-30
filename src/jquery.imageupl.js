@@ -1,11 +1,10 @@
 
 (function( $ ) {
-    var img = null;
-    var canvas = null;
 
     var methods = {
+        options: null,
         init: function(options) {
-            options = $.extend({}, $.fn.imageUpl.defaults, options);
+            this.options = $.extend({}, $.fn.imageUpl.defaults, options);
 
             // Check for the various File API support.
             if (window.File && window.FileReader && window.FileList && window.Blob) {
@@ -15,39 +14,14 @@
             }
 
             return this.each(function() {
+
                 $this = $(this);
+
+
 
                 if(!$this.attr('type') || $this.attr('type') != "file") {
                     throw "A input type file is required.";
                 }
-
-                $this.hide();
-
-                var dropbox = $($this.data('drop-zone'));
-
-                dropbox.bind(
-                    "dragenter",
-                    function(event) {
-                        event.stopPropagation();
-                        event.preventDefault();
-                    },
-                    false);
-
-                dropbox.bind(
-                    "dragover",
-                    function(event) {
-                        event.stopPropagation();
-                        event.preventDefault();
-                    },
-                    false);
-
-                dropbox.bind(
-                    "drop",
-                    function(event) {
-                        event.stopPropagation();
-                        event.preventDefault();
-                    },
-                    false);
 
 
             });
@@ -69,7 +43,13 @@
     $.fn.imageUpl.defaults = {
         maxFileSize: "2000",
         maxWidth: 800,
-        maxHeght: 600
+        maxHeight: 600,
+        acceptedTypes: [
+            "image/jpeg",
+            "image/png",
+            "image/gif"
+        ],
+        fileLoaded: function(file) {}
     };
 
 })( jQuery );

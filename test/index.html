@@ -9,8 +9,12 @@
 <body>
     <div id="qunit"></div>
     <div id="qunit-fixture">
+        <div class="dz">
+            <div id="drop-zone"></div>
+            <div class="message">Drop the image file here!</div>
+        </div>
         <form action="index_submit" method="post" accept-charset="utf-8">
-            <input type="file" name="img" id="img">
+            <input type="file" name="img" id="img" data-dropbox="drop-zone">
         </form>
     </div>
     <script src="../libraries/jquery/dist/jquery.min.js"></script>

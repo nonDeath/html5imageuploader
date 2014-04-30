@@ -1,0 +1,30 @@
+.form-container {
+    margin: 0 auto;
+    width: 800px;
+    padding: 15px;
+}
+
+.dz {
+    position: relative;
+    border: dashed 4px #d2d2d2;
+    width: 800px;
+    height: 50px;
+    padding: 15px;
+    margin: 0 auto;
+
+    color: #d2d2d2;
+    vertical-align: middle;
+    text-align: center;
+
+}
+.dz .message {
+    position: absolute;
+    top: 48%;
+    width: 100%;
+    text-align: center;
+    text-transform: uppercase;
+}
+.dz img {
+    border: dotted 2px red;
+    margin: 0 auto;
+}

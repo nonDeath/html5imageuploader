@@ -16,9 +16,9 @@ test("init test", function() {
         "Something bad was happened, a file input is required here."
     );
 
+    ok(!$.fn.imageUpl.init, "No publics methods accesible in the plugin.");
 
-
-
+    ok(!$(document.createElement("img")).imageUpl.init, "No publics methods callable with a element in the plugin.");
 });
 
 test("default values setting test", function() {
