@@ -27,3 +27,36 @@ test("default values setting test", function() {
     $.fn.imageUpl.defaults.maxFileSize = "3000";
     equal($.fn.imageUpl.defaults.maxFileSize, "3000", "defaults global options can be changed.");
 });
+
+test("Options setting test", function() {
+    var imgUpl = $("#img").imageUpl();
+
+    propEqual($("#img").data("options"), $.fn.imageUpl.defaults, "options are equals to defaults.");
+
+    var expected = {
+            url: null,
+            maxFileSize: "3000",
+            maxWidth: 640,
+            maxHeight: 480,
+            crop: true,
+            acceptedTypes: [
+                "image/jpeg",
+                "image/gif"
+            ],
+            fileLoaded: function(file) {},
+            afterUpdate: function() {},
+            beforeSend: function() {}
+        },
+        file = $('<input type="file">'),
+        imgUpl2 = file.imageUpl({
+            maxFileSize: "3000",
+            maxWidth: 640,
+            maxHeight: 480,
+            acceptedTypes: [
+                "image/jpeg",
+                "image/gif"
+            ]
+        });
+
+    propEqual(file.data("options"), expected, "options are equals to settings.");
+});

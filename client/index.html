@@ -3,23 +3,27 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Uso Uno</title>
+    <title>Use case</title>
     <link rel="stylesheet" href="./css/style.css">
 </head>
 <body>
 
     <div id="container">
         <div class="form-container">
-            <form action="process.php" method="post" accept-charset="utf-8" enctype="multipart/form-data">
-                <input type="file" name="img" id="img" data-drop-zone="drop-zone" data-canvas-preview="preview">
-                <button type="submit">Enviar</button>
+            <form id="frm-upload">
+                <input type="hidden" name="code" value="77gdfg">
+                <input type="file" name="img" id="img" data-drop-zone="drop-zone" data-preview="preview" data-progress="progress-bar"><progress id="progress-bar" min="0" max="0" value="0">0</progress>
+                <button id="send" type="submit">Send</button>
             </form>
         </div>
-        <div class="dz" id="drop-zone">
-            <div class="message">Drop the image file here!</div>
+        <br>
+        <div id="drop-zone">
+            <div></div>
         </div>
-        <canvas id="preview" style="margin 0 auto;"></canvas>
-
+        <br>
+        <div class="preview" id="preview">
+            <div class="message">Preview zone</div>
+        </div>
 
     </div>
     <script src="../libraries/jquery/dist/jquery.min.js"></script>
@@ -27,8 +31,36 @@
 
     <script type="text/javascript">
         $(document).ready(function() {
-            $("#img").imageUpl({fileLoaded: function(file) {  }});
+
+            $("#progress-bar").hide();
+
+            $("#img").imageUpl({
+                url: "./process.php",
+                maxWidth: 640,
+                maxHeight: 480,
+                beforeSend: function() {
+                    $("#send").hide();
+                    $("#progress-bar").show();
+                },
+                afterUpdate: function(data) {
+                    data = $.parseJSON(data);
+                    if(data.status == 200) {
+                        $("#send").show();
+
+                    }
+                    $("#progress-bar").hide();
+                }
+            });
+
+
+            $("#frm-upload").bind("submit", function(event) {
+                event.preventDefault();
+                $("#img").imageUpl("upload");
+            });
+
         });
+
+
     </script>
 </body>
 </html>
